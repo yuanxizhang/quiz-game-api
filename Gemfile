@@ -19,6 +19,13 @@ gem 'puma', '~> 4.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Enable Cross-Origin Resource Sharing (CORS) to make cross-origin AJAX requests possible
+gem 'rack-cors'
+# Use Active Model Serializers for serailizing API output
+gem 'active_model_serializers'
+# Protect our API from DDoS, brute force attacks
+gem 'rack-attack'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
