@@ -1,9 +1,9 @@
-class QuestionsController < ApplicationController
-    before_action :find_question, only: [:show, :update, :destroy]
+class Api::V1::QuestionsController < ApplicationController
+  before_action :find_question, only: [:show, :update, :destroy]
 
   # GET /questions
   def index
-    questions = Todo.all
+    questions = Question.all
     render json: questions
   end
 
@@ -24,23 +24,23 @@ class QuestionsController < ApplicationController
     render json: question
   end
 
- # PUT /tests/:id
+ # PUT /questions/:id
  def update
-    test.update(test_params)
-    if test.save
-      render json: test, status: :accepted
+    question.update(question_params)
+    if question.save
+      render json: question, status: :accepted
     else
-      render json: { errors: test.errors.full_messages }, status: :unprocessible_entity
+      render json: { errors: question.errors.full_messages }, status: :unprocessible_entity
     end
-  end
+ end
 
-  # DELETE /tests/:id
+  # DELETE /questions/:id
   def destroy
-    test = Test.find_by(:id => params[:id])
-    if test.destroy
+    question = Question.find_by(:id => params[:id])
+    if question.destroy
       render json: { message: "removed" }, status: :ok
     else
-      render json: test, message: "Failed to remove", status: :bad_request
+      render json: question, message: "Failed to remove", status: :bad_request
     end
   end
   
