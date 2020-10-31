@@ -3,8 +3,8 @@ class Api::V1::TestsController < ApplicationController
 
   # GET /tests
   def index
-    tests = Test.all
-    render json: tests
+    @tests = Test.all.order(:name)
+    render json: @tests
   end
 
    # GET /tests/:id
@@ -14,13 +14,13 @@ class Api::V1::TestsController < ApplicationController
 
   # POST /tests
   def create
-    test = Test.new(test_params)
+    @test = Test.new(test_params)
     
-    if test.valid?
-      test.save
-      render json: test, status: :accepted
+    if @test.valid?
+      @test.save
+      render json: @test, status: :accepted
     else 
-      render json: { errors: test.errors.full_messages }, status: :unprocessible_entity
+      render json: { errors: @test.errors.full_messages }, status: :unprocessible_entity
     end
   end
 
@@ -47,7 +47,9 @@ class Api::V1::TestsController < ApplicationController
 
   def test_params
     # whitelist params
-    params.require(:test).permit(:name)
+    params.require(:test).permit(:name,
+      questions_attributes: [:id, :question,:answer, :explain, :test_id, :_destroy,
+        options_attributes: [:id, :item, :question_id, :_destroy]])
   end
 
   def find_test
