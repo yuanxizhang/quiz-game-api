@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :options
-  resources :questions
-  resources :tests
+  namespace :api do
+    namespace :v1 do
+      resources :tests do
+        resources :questions do
+          resources :options
+        end
+      end
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
