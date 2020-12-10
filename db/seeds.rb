@@ -75,7 +75,7 @@ sql_Q2 = sql.questions.create({
     })
 sql_Q2.options.create({item: "A - Group functions operate on sets of rows to produce multiple results per group."})
 sql_Q2.options.create({item: "B - DISTINCT keyword makes a group function consider duplicate values."})
-sql_Q2.options.create({item: "C - Group functions ignore null values"})
+sql_Q2.options.create({item: "C - Group functions ignore null values."})
 sql_Q2.options.create({item: "D - None of the above."})
 
 sql_Q3 = sql.questions.create({
@@ -86,7 +86,7 @@ sql_Q3 = sql.questions.create({
 sql_Q3.options.create({item: "A - Subqueries could be used for Top-N analysis."})
 sql_Q3.options.create({item: "B - Subqueries can be of two types – single-row subquery and multiple-row subquery."})
 sql_Q3.options.create({item: "C - The outer and inner queries can get data from different tables."})
-sql_Q3.options.create({item: "D - All of the above"})
+sql_Q3.options.create({item: "D - All of the above."})
 
 sql_Q4 = sql.questions.create({
     question: "Q 4 - Which of the following is not true about multiple-row subqueries?", 
