@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_31_065024) do
+ActiveRecord::Schema.define(version: 2020_12_12_233721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 2020_10_31_065024) do
     t.index ["question_id"], name: "index_options_on_question_id"
   end
 
+  create_table "problems", force: :cascade do |t|
+    t.string "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.text "question"
     t.string "answer"
@@ -33,6 +39,14 @@ ActiveRecord::Schema.define(version: 2020_10_31_065024) do
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
+  create_table "solutions", force: :cascade do |t|
+    t.string "text"
+    t.bigint "problem_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["problem_id"], name: "index_solutions_on_problem_id"
+  end
+
   create_table "tests", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -41,4 +55,5 @@ ActiveRecord::Schema.define(version: 2020_10_31_065024) do
 
   add_foreign_key "options", "questions"
   add_foreign_key "questions", "tests"
+  add_foreign_key "solutions", "problems"
 end
