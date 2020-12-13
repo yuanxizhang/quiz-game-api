@@ -1,4 +1,4 @@
-lass ProblemSerializer < ActiveModel::Serializer
+class ProblemSerializer < ActiveModel::Serializer
   attributes :id, :text, :solutions
   
   def solutions

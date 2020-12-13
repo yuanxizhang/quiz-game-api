@@ -48,7 +48,7 @@ class Api::V1::ProblemsController < ApplicationController
   def problem_params
     # whitelist params
     params.require(:problem).permit(:text,
-      solutions_attributes: [:id, :text :problem_id, :_destroy])
+      solutions_attributes: [:id, :text, :language, :problem_id, :_destroy])
   end
 
   def find_problem
