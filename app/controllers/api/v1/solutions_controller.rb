@@ -1,9 +1,10 @@
 class Api::V1::SolutionsController < ApplicationController
+  before_action :get_problem
   before_action :find_solution, only: [:show, :update, :destroy]
 
   # GET /solutions
   def index
-    @solutions = Solution.all.order(:name)
+    @solitions = @Problem.posts
     render json: @solutions
   end
 
@@ -14,7 +15,7 @@ class Api::V1::SolutionsController < ApplicationController
 
   # POST /solutions
   def create
-    @solution = Solution.new(solution_params)
+    @solution = @problem.solutions.build(solution_params)
     
     if @solution.valid?
       @solution.save
@@ -45,13 +46,17 @@ class Api::V1::SolutionsController < ApplicationController
 
   private
 
+  def get_problem
+     @problem = Problem.find(params[:problem_id])
+   end
+
+  def find_solution
+    @solution = @problem.solutions.find_by(:id => params[:id])
+  end
+
   def solution_params
     # whitelist params
     params.require(:solution).permit(:text, :language, :problem_id)
-  end
-
-  def find_solution
-    @solution = Solution.find_by(:id => params[:id])
   end
 
 end
