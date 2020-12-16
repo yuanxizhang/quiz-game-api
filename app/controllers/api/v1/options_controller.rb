@@ -4,7 +4,7 @@ class Api::V1::OptionsController < ApplicationController
   # GET /options
   def index
     options = Option.all
-    render json: options
+    render json: @options
   end
 
   # GET /options/:id

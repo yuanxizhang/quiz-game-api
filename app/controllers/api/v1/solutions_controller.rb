@@ -4,7 +4,7 @@ class Api::V1::SolutionsController < ApplicationController
 
   # GET /solutions
   def index
-    @solitions = @Problem.posts
+    @solutions = @Problem.posts
     render json: @solutions
   end
 
@@ -56,7 +56,7 @@ class Api::V1::SolutionsController < ApplicationController
 
   def solution_params
     # whitelist params
-    params.require(:solution).permit(:text, :language, :problem_id)
+    params.require(:solution).permit(:text, :language)
   end
 
 end
