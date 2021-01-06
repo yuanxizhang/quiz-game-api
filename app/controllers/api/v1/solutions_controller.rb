@@ -2,9 +2,9 @@ class Api::V1::SolutionsController < ApplicationController
   before_action :get_problem
   before_action :find_solution, only: [:show, :update, :destroy]
 
-  # GET /solutions
+  # GET /problem/:id/solutions
   def index
-    @solutions = @Problem.posts
+    @solutions = @Problem.solutions
     render json: @solutions
   end
 
@@ -13,7 +13,7 @@ class Api::V1::SolutionsController < ApplicationController
     render json: @solution
   end
 
-  # POST /solutions
+  # POST /problem/:id/solutions
   def create
     @solution = @problem.solutions.build(solution_params)
     
@@ -25,7 +25,7 @@ class Api::V1::SolutionsController < ApplicationController
     end
   end
 
-  # PUT /solutions/:id
+  # PUT /problem/:id/solutions/:id
   def update
     @solution.update(solution_params)
     if @solution.save
@@ -35,7 +35,7 @@ class Api::V1::SolutionsController < ApplicationController
     end
   end
 
-  # DELETE /solutions/:id
+  # DELETE /problem/:id/solutions/:id
   def destroy
     if @solution.destroy
       render json: { message: "removed" }, status: :ok
