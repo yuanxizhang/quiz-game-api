@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :tests do
-        resources :questions do
-          resources :options
-        end
-      end
+      resources :tests 
+      resources :questions 
+      resources :options
+      
       resources :problems do
         resources :solutions
       end
