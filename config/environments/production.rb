@@ -13,6 +13,11 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
 
+  # Add middleware for cookies and sessions
+  config.session_store :cookie_store, key: '_interslice_session'
+  config.middleware.use ActionDispatch::Cookies
+  config.middleware.use config.session_store, config.session_options
+
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true

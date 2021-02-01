@@ -25,6 +25,11 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # Add middleware for cookies and sessions
+  config.session_store :cookie_store, key: '_interslice_session'
+  config.middleware.use ActionDispatch::Cookies
+  config.middleware.use config.session_store, config.session_options
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
