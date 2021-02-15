@@ -17,6 +17,9 @@ gem 'puma', '~> 4.1'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# FriendlyId is the tool of choice for slugging. It lets you create pretty URLs with strings instead of id numbers.
+gem 'friendly_id', '~> 5.4.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
