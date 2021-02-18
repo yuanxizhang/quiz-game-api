@@ -9,24 +9,36 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
-# Use Active Model has_secure_password
+# Use Active Model has_secure_password for user authentication
 gem 'bcrypt', '~> 3.1.7'
 
-# FriendlyId is the tool of choice for slugging. It lets you create pretty URLs with strings instead of id numbers.
+# Use Json Web Token (JWT) for token based user authentication
+gem 'jwt', '~> 1.5', '>= 1.5.4'
+
+# Authentication solution for Rails based on JWT
+gem 'knock', '~> 1.4', '>= 1.4.2'
+
+# Use FriendlyId to create pretty URLs with strings instead of id numbers.
 gem 'friendly_id', '~> 5.4.0'
+
+# Use Carrierwave to upload files
+gem 'carrierwave', '~> 2.0'
+
+# Use Cloudinary for managing media assets(images) in the cloud
+gem 'cloudinary'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-# Enable Cross-Origin Resource Sharing (CORS) to make cross-origin AJAX requests possible
-gem 'rack-cors'
 # Use Active Model Serializers for serailizing API output
 gem 'active_model_serializers'
+
 # Protect our API from DDoS, brute force attacks
 gem 'rack-attack'
 
@@ -34,7 +46,7 @@ gem 'rack-attack'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,53 +1,56 @@
 class Api::V1::UsersController < ApplicationController
-
-	def index
-    @users = User.all
-    if @users
-      render json: {
-        users: @users
-      }
-    else
-      render json: {
-        status: 500,
-        errors: ['no users found']
-      }
-    end
-	end
-
-	def show
-    @user = User.friendly.find(params[:id])
-   if @user
-      render json: {
-        user: @user
-      }
-    else
-      render json: {
-        status: 500,
-        errors: ['user not found']
-      }
-    end
-  end
+  before_action :authenticate_user, except: [:create]
+  before_action :find_user, except: %i[create index]
   
+  # GET /users
+  def index
+    @users = User.all
+    render json: @users, status: :ok
+  end
+
+  # GET /users/{username}
+  def show
+    render json: @user, status: :ok
+  end
+
+  # POST /users
   def create
     @user = User.new(user_params)
     if @user.save
-      login!
-      render json: {
-        status: :created,
-        user: @user
-      }
-    else 
-      render json: {
-        status: 500,
-        errors: @user.errors.full_messages
-      }
+      render json: @user, status: :created
+    else
+      render json: { errors: @user.errors.full_messages },
+             status: :unprocessable_entity
     end
   end
 
-	private
-  
+  # PUT /users/{username}
+  def update
+    unless @user.update(user_params)
+      render json: { errors: @user.errors.full_messages },
+             status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /users/{username}
+  def destroy
+    if current_user.admin?
+      @user.destroy
+    end
+  end
+
+  private
+
+  def find_user
+    @user = User.find_by_username!(params[:_username])
+    rescue ActiveRecord::RecordNotFound
+      render json: { errors: 'User not found' }, status: :not_found
+  end
+
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(
+      :username, :email, :password, :password_confirmation, :admin
+    )
   end
   
 end

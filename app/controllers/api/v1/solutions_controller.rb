@@ -1,6 +1,7 @@
 class Api::V1::SolutionsController < ApplicationController
   before_action :get_problem
   before_action :find_solution, only: [:show, :update, :destroy]
+  before_action :authenticate_user, only: [:update, :destroy]
 
   # GET /problem/:id/solutions
   def index
