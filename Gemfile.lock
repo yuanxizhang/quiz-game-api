@@ -102,7 +102,7 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     jsonapi-renderer (0.2.2)
     jwt (1.5.6)
-    knock (1.5)
+    knock (2.1.1)
       bcrypt (~> 3.1)
       jwt (~> 1.5)
       rails (>= 4.2)
@@ -214,7 +214,7 @@ DEPENDENCIES
   cloudinary
   friendly_id (~> 5.4.0)
   jwt (~> 1.5, >= 1.5.4)
-  knock (~> 1.4, >= 1.4.2)
+  knock (~> 2.1, >= 2.1.1)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
