@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  post '/login', to: 'user_token#create'
+  scope '/api/v1' do
+    post '/login', to: 'user_token#create'
+  end
 
   namespace :api do
     namespace :v1 do
