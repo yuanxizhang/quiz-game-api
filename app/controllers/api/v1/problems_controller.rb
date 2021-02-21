@@ -4,7 +4,7 @@ class Api::V1::ProblemsController < ApplicationController
 
   # GET /problems
   def index
-    @problems = Problem.all
+    @problems = Problem.all.order(created_at: :desc)
     render json: @problems
   end
 

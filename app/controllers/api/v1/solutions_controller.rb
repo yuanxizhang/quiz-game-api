@@ -5,7 +5,7 @@ class Api::V1::SolutionsController < ApplicationController
 
   # GET /problem/:id/solutions
   def index
-    @solutions = @Problem.solutions
+    @solutions = @Problem.solutions.order(created_at: :desc)
     render json: @solutions
   end
 
