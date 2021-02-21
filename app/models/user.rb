@@ -3,6 +3,8 @@ class User < ApplicationRecord
   friendly_id :username, use: :slugged
 
   has_secure_password
+  has_many :problems, dependent: :destroy
+  has_many :solutions, dependent: :destroy
   
 	validates :username, presence: true
 	validates :username, uniqueness: { case_sensitive: false }
