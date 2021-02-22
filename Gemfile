@@ -24,6 +24,9 @@ gem 'jwt', '~> 1.5', '>= 1.5.4'
 # Authentication solution for Rails based on JWT
 gem 'knock', '~> 2.1', '>= 2.1.1'
 
+# Load environmental variables
+gem 'dotenv', '~> 2.1', '>= 2.1.1'
+
 # Use FriendlyId to create pretty URLs with strings instead of id numbers.
 gem 'friendly_id', '~> 5.4.0'
 
