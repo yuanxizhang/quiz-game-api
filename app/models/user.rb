@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 	extend FriendlyId
-  friendly_id :username, use: :slugged
+  friendly_id :username, use: [:finders, :slugged]
 
   has_secure_password
   has_many :problems, dependent: :destroy
