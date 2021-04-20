@@ -1,6 +1,6 @@
 class Api::V1::TestsController < ApplicationController
   before_action :find_test, only: [:show, :update, :destroy]
-  before_action :authenticate_user, only: [:create, :update, :destroy]
+  before_action :authenticate_user, only: [:update, :destroy]
 
   # GET /tests
   def index
